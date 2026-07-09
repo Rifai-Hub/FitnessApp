@@ -35,6 +35,7 @@ Route::middleware('auth')->group(function () {
         Route::livewire('/dashboard', 'admin.dashboard')->name('dashboard');
         Route::livewire('/members', 'admin.members')->name('members');
         Route::livewire('/membership-plans', 'admin.membership-plans')->name('membership-plans');
+        Route::livewire('/personal-trainer-packages', 'admin.personal-trainer-packages')->name('personal-trainer-packages');
         Route::livewire('/schedules', 'admin.schedules')->name('schedules');
         Route::livewire('/revenue-report', 'admin.revenue-report')->name('revenue-report');
     });
