@@ -6,8 +6,9 @@ use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\Storage;
 
-#[Fillable(['user_id', 'membership_plan_id', 'tanggal_gabung', 'tanggal_expired', 'status'])]
+#[Fillable(['user_id', 'nik', 'alamat', 'ktp_path', 'membership_plan_id', 'tanggal_gabung', 'tanggal_expired', 'status'])]
 class Member extends Model
 {
     protected function casts(): array
@@ -16,6 +17,11 @@ class Member extends Model
             'tanggal_gabung' => 'date',
             'tanggal_expired' => 'date',
         ];
+    }
+
+    public function ktpUrl(): ?string
+    {
+        return $this->ktp_path ? Storage::disk('public')->url($this->ktp_path) : null;
     }
 
     /**
